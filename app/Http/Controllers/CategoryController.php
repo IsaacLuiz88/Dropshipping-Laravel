@@ -6,15 +6,15 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::all();
-        return view('Products.Products_index', compact('products'));
+        $categories = Category::all();
+        return view('Categories.Categories_index',compact('categories'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('Categories.Categories_create');
     }
 
     /**
@@ -30,15 +30,24 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required|string|max:255|unique:categories,name',
+        ]);
+
+        Category::create([
+            'name'=>$request->name,
+        ]);
+
+        return redirect()->route('categories.index')->with('success','Category created successfully');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Category $category)
     {
-        //
+        $products = Product::where('category_id', $category->id)->get();
+        return view('Categories.Categories_show',compact('category', 'products'));
     }
 
     /**
@@ -63,10 +72,5 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function showByCategory(Category $category){
-        $products = $category->products()->get();
-        return view('Products.Products_category',compact('category', 'products'));
     }
 }

@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Product;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
-class ProductController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $products = Product::all();
-        return view('Products.Products_index', compact('products'));
+        $customers = Customer::all();
+        return view('Customers.Customers_index',compact('customers'));
     }
 
     /**
@@ -63,10 +62,5 @@ class ProductController extends Controller
     public function destroy(string $id)
     {
         //
-    }
-
-    public function showByCategory(Category $category){
-        $products = $category->products()->get();
-        return view('Products.Products_category',compact('category', 'products'));
     }
 }
