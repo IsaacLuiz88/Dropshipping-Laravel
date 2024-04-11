@@ -2,7 +2,7 @@
 
 @section('content')
 
-<a href="{{ route('home') }}">Home</a><br>
+<a href="{{ route('home') }}">Home</a>  | <a href="{{ route('products.create') }}">Create new product</a><br>
 <div class="container">
     @foreach ($products as $product)
     <div class="product">

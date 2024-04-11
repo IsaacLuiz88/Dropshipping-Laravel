@@ -22,7 +22,7 @@
 
 .product {
     background-color: #ffffff;
-    border: 1px solid #000000;
+    border: 1px solid #ff0000;
     padding: 10px;
     margin: 5px;
     width: 180px;

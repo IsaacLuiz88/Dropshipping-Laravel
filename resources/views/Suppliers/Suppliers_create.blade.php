@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2>Add new Supplier</h2>
+<h2>Add new Supplier | <a href=" {{route('suppliers.index')}} ">Back</a></h2>
 
 <form method="POST" action="{{ route('suppliers.store') }}">
 @csrf

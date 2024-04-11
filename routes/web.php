@@ -16,7 +16,9 @@ Route::get('/produtcs/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/produtcs/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/produtcs/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-Route::get('/costumers', [CustomerController::class, 'index'])->name('costumers.index');
+Route::get('/customers', [CustomerController::class, 'index'])->name('customers.index');
+Route::get('/customers/create', [CustomerController::class, 'create'])->name('customers.create');
+Route::get('/costumers', [CustomerController::class, 'store'])->name('customers.store');
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');

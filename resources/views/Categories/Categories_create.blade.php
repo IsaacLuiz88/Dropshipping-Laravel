@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2>Create Category</h2>
+<h2>Create Category | <a href="{{ route('categories.index') }}">Back</a></h2>
 
 <form method="POST" action="{{ route('categories.store') }}">
 @csrf

@@ -21,7 +21,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('Customers.Customers_create');
     }
 
     /**
@@ -29,7 +29,21 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name_customers'=>'required|string|max:255',
+            'email_customers'=>'required|string|max:255',
+            'password_customers'=>'required|string|max:255',
+            'address_customers'=>'required|string|min:8',
+        ]);
+
+        $customer = new Customer();
+        $customer->name = $request->name_customers;
+        $customer->email = $request->email_customers;
+        $customer->password = $request->password_customers;
+        $customer->address = $request->address_customers;
+
+        return redirect()->route('customers.index')->with('success', 'Customer created successfully');
+
     }
 
     /**
